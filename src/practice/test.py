@@ -19,25 +19,15 @@ class SinglyLinkedList:
             new_node = Node(data)
             self.head_node = new_node
         else:
-            new_node = Node(data)
-            new_node.next_value = self.head_node
-            self.head_node = new_node
+           new_node= Node(data)
+           new_node.next_value=self.head_node
+           self.head_node=new_node
+            
 
-    def inset_at_last(self, data):
-        if (self.is_empty()):
-            new_node = Node(data)
-            self.head_node = new_node
-        else:
-            last_node = self.head_node
-            while(last_node.next_value is not None):
-                last_node = last_node.next_value
-            new_node = Node(data)
-            last_node.next_value = new_node
-
-    def list(self):
+    def print(self):
         current_node = self.head_node
         while(current_node is not None):
-            print(current_node.data, end=" ")
+            print(current_node.data)
             current_node = current_node.next_value
 
     def remove(self):
@@ -52,15 +42,11 @@ class SinglyLinkedList:
             print("list empty")
         else:
             current_node = self.head_node
-            previous_node = current_node
-
+            previous_node = None
             while(current_node is not None):
-                if(current_node.data == value and current_node == previous_node):
-                    self.head_node = current_node.next_value
-                    break
-                elif(current_node.data == value):
+
+                if(current_node.data == value):
                     previous_node.next_value = current_node.next_value
-                    current_node=None
                     break
                 previous_node = current_node
                 current_node = current_node.next_value
@@ -70,9 +56,9 @@ linked_list = SinglyLinkedList()
 for i in range(1, 6, 1):
     linked_list.inset_at_first(i)
 
-for i in range(10, 16, 1):
-    linked_list.inset_at_last(i)
 
-
-linked_list.remove_by_value(12)
-linked_list.list()
+linked_list.is_empty()
+linked_list.print()
+linked_list.remove_by_value(2)
+linked_list.print()
+linked_list.remove()
